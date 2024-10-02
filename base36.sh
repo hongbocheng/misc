@@ -14,12 +14,11 @@ if [ $1 == "-r" ]; then
         shift
         for i in "$@"
         do
-                echo -n "$i --- ";decimal_to_base36 $i
+        echo -n "$i --- ";decimal_to_base36 $i
         done
 else
-
         for i in "$@"
         do
-                echo -n "$i ... ";bc<<<"ibase=36;$i"
+                echo -n "$i ... ";bc<<<"ibase=36;$(echo $i| tr [a-z] [A-Z])"
         done
 fi
